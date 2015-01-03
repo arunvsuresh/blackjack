@@ -16,4 +16,3 @@ class window.HandView extends Backbone.View
     @$('.score').text @collection.scores()[0]
 
 
-
