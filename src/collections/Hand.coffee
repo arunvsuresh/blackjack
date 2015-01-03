@@ -5,22 +5,20 @@ class window.Hand extends Backbone.Collection
     #console.log(array[1].flip())
 
   hit: ->
-    @add(@deck.pop()) if @minScore() < 21
-    alert "Bust" if @minScore() > 21
+    topCard = @deck.models[@deck.models.length - 1]
+    @add(@deck.pop())
+    if @minScore() > 21
+      alert "Bust!"
+      @trigger 'chooseWinner'
+
+    return topCard
+
 
   stand: ->
     @trigger 'stand', @
-    userScore = @minScore()
 
-    # if userScore > dealerScore and userScore < 21
-    #   dealer hits
-    # else if dealerScore <= 11
-    #   dealer hits
-    # else dealer stands
-    # if user and dealer both stand
-    #   evaluate score and assess winner
-
-    # dealer move is triggered only when user stands
+  chooseWinner: (winner) ->
+    alert winner + ' wins!'
 
   dealerMove: ->
     #declaring event listener
