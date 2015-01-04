@@ -8,7 +8,7 @@ class window.Hand extends Backbone.Collection
     topCard = @deck.models[@deck.models.length - 1]
     @add(@deck.pop())
     if @minScore() > 21
-      alert "Bust!"
+      swal "Bust!"
       @trigger 'chooseWinner'
 
     return topCard
@@ -18,7 +18,7 @@ class window.Hand extends Backbone.Collection
     @trigger 'stand', @
 
   chooseWinner: (winner) ->
-    alert winner + ' wins!'
+    swal winner + ' wins!'
 
   dealerMove: ->
     #declaring event listener
